@@ -1,0 +1,64 @@
+<mat-toolbar>
+  <h3>Invoices</h3>
+  <div class="menu-bar">
+  <button mat-button (click)="save()"> New Invoice</button>
+  </div>
+</mat-toolbar>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="item">
+      <mat-header-cell *matHeaderCellDef> Item. </mat-header-cell>
+      <mat-cell *matCellDef="let invoice">{{invoice.item}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.date}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="due">
+      <mat-header-cell *matHeaderCellDef> Due </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.due}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="qty">
+      <mat-header-cell *matHeaderCellDef> Qty </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.qty}} </mat-cell>
+    </ng-container>
+  <ng-container matColumnDef="rate">
+      <mat-header-cell *matHeaderCellDef> Rate </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.rate}} </mat-cell>
+    </ng-container>
+  <ng-container matColumnDef="tax">
+      <mat-header-cell *matHeaderCellDef> Tax </mat-header-cell>
+      <mat-cell *matCellDef="let invoice"> {{invoice.tax}} </mat-cell>
+    </ng-container>
+  <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let invoice">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editeBtn(invoice._id)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="deleteBtn(invoice._id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+    </mat-cell>
+  </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
