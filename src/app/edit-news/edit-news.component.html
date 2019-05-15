@@ -1,0 +1,16 @@
+
+
+<form [formGroup]="angForms">
+  <div class="form-group">
+    <input type="text" style="margin-left: 300px" placeholder="Enter news title" formControlName="title" #title [(ngModel)] = "news.title">
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" rows="3" cols="10" id="comment" name="text" formControlName="textarea" #textarea [(ngModel)] = "news.textarea"></textarea>
+  </div>
+  <div class="form-group">
+    <button type="submit" (click)="updateNews(title.value,textarea.value)"
+            [disabled]="angForms.invalid"
+            class="btn btn-primary">Update News</button>
+  </div>
+</form>
+

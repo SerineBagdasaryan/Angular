@@ -1,0 +1,31 @@
+<button class="btn btn-success" style="margin-left: 800px" (click)="logout()">
+  Logout
+</button>
+<h1 class="text-center">Admin page</h1>
+<p>{{adminData?.fname}}</p>
+<p>{{adminData?.lname}}</p>
+<p>{{adminData?.email}}</p>
+<div class="form-group">
+  <button class="btn btn-primary" (click)="show=!show">Change Password</button>
+</div>
+<form [formGroup]="passForm" *ngIf="!show">
+  <div class="form-group">
+    <input placeholder="Enter your new password" type="password" formControlName="password" #password>
+  </div>
+  <div class="form-group">
+    <button  class="btn btn-primary" (click)="changePassword(password.value)">Send password</button>
+  </div>
+</form>
+
+
+<button (click)="create()">Create User</button>
+<h2>User list</h2>
+<table class="text-center">
+<tr *ngFor="let user of users">
+  <td>{{ user.fname }}</td>
+  <td>{{ user.lname }}</td>
+  <td>{{ user.email }}</td>
+  <td><a [routerLink]="['/editUser/', user._id]" class="btn btn-primary">Edit</a></td>
+  <td><a (click) = "deleteUsers(user._id)" class="btn btn-danger">Delete</a></td>
+</tr>
+</table>

@@ -1,0 +1,31 @@
+<h2>Edite user</h2>
+<form [formGroup]="angForm" style="width: 70%; margin-top: 20px" >
+  <div class="form-group">
+    <input type="text" style="width: 50%" placeholder="Enter name" formControlName="fname" #fname [(ngModel)] = "users.fname">
+  </div>
+  <div class="form-group">
+    <input type="text" style="width: 50%" placeholder="Enter lname" formControlName="lname" #lname [(ngModel)] = "users.lname">
+  </div>
+   <div class="form-group">
+    <input type="text" style="width: 50%" placeholder="Enter email" formControlName="email" #email [(ngModel)] = "users.email">
+  </div>
+  <div class="form-group">
+    <input type="text" style="width: 50%" placeholder="Enter password" formControlName="password" #password [(ngModel)] = "users.password">
+  </div>
+  <div class="form-group">
+    <input type="text" style="width: 50%" placeholder="Enter conf password" formControlName="cpassword" #cpassword [(ngModel)] = "users.cpassword">
+  </div>
+
+  <div class="form-group">
+    <select class="form-control"  style="width: 50%"  [(ngModel)] = "users.role" #role formControlName="role">
+      <option  *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" (click)="updateUsers(fname.value,lname.value,email.value,password.value,cpassword.value,role.value)"
+            [disabled]="angForm.invalid"
+            class="btn btn-primary">Update Users</button>
+  </div>
+</form>
+
+

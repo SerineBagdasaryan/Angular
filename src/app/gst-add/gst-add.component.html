@@ -1,0 +1,73 @@
+<div class="card" style="width: 70%">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">First Name</label>
+        <input type="text"  name ="name" class="form-control" formControlName="fname" #fname />
+      </div>
+      <div *ngIf="angForm.controls['fname'].invalid && (angForm.controls['fname'].dirty || angForm.controls['fname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['fname'].errors.required">
+          First Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Last Name </label>
+        <input type="text" class="form-control" name="lastname" formControlName="lname" #lname />
+      </div>
+      <div *ngIf="angForm.controls['lname'].invalid && (angForm.controls['lname'].dirty || angForm.controls['lname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['lname'].errors.required">
+           Last name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Email </label>
+        <input type="email" name="email" class="form-control" formControlName="email" #email />
+      </div>
+      <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['email'].errors.required">
+         Email is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Password </label>
+        <input type="password"  name= "password" class="form-control" formControlName="password" #password />
+      </div>
+      <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['password'].errors.required">
+         Password is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Confirm Password </label>
+        <input type="password" name="cpassword" class="form-control" formControlName="cpassword" #cpassword />
+      </div>
+      <div *ngIf="angForm.controls['cpassword'].invalid && (angForm.controls['cpassword'].dirty || angForm.controls['cpassword'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['cpassword'].errors.required">
+        Confirm Password is required.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="contry">User Role</label>
+        <select class="form-control" id="contry" #role formControlName="role">
+          <option *ngFor="let role of roles" [value]="role.name">{{role.name}}</option>
+        </select>
+      </div>
+
+
+
+      <div class="form-group">
+        <button (click)="addUsers(fname.value, lname.value, email.value,password.value,cpassword.value,role.value);fname.value= ''; lname.value = ''; email.value='';password.value= '';cpassword.value='';role.value= ''"
+                [disabled]="angForm.pristine || angForm.invalid"
+                class="btn btn-primary">
+          Register
+        </button>
+        <p style="color: red">{{errorMessage}}</p>
+        <p style="color: red">{{errors}}</p>
+        <p style="color: green">{{er}} </p>
+        <p style="color: red">{{message}} </p>
+      </div>
+    </form>
+  </div>
+</div>
