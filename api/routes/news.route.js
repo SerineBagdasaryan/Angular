@@ -14,8 +14,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const secret = 'secret';
 app.use(express.static('./public'));
-// app.use( express.static(path.join(__dirname, './public')))
-
 
 const storage = multer.diskStorage({
   destination: './public/images',
