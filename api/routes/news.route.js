@@ -13,7 +13,7 @@ let News = require('../models/News');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const secret = 'secret';
-app.use(express.static('./public'));
+app.use(express.static('public'));
 
 const storage = multer.diskStorage({
   destination: './public/images',
@@ -40,13 +40,24 @@ function checkFileType(file,cb){
     cb('Error: Image only!')
   }
 }
-routes.post('/upload', (req,res) => {
+
+let userId;
+function verifyToken(req, res, next) {
   let token = req.headers["authorization"];
-  console.log(token);
-  jwt.verify(token,secret, function (err, decoded) {
-    if(err){
-      res.json({err:err});
-    }else {
+  if (!token)
+    return res.status(403).send({ auth: false, message: 'No token provided.' });
+  jwt.verify(token, secret, function(err, decoded) {
+    if (err)
+      return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+     userId = decoded.sub;
+    console.log(decoded,'fggg');
+    next();
+  });
+}
+
+
+
+routes.post('/upload', verifyToken,(req,res) => {
 upload(req,res,(err)=>{
 if(err){
   res.send(err);
@@ -54,10 +65,11 @@ if(err){
   if(req.file === 'undefined'){
     res.json({msg:'No file selected'});
   } else {
-    const fullPath = "images/" + req.file.filename;
+    // const fullPath = "images/" + req.file.filename;
+    const fullPath = req.file.filename;
     const images = new Images({
       image: fullPath,
-      userId: decoded.sub,
+      userId: userId,
     })
     images.save(function (err,file) {
       if(err) {
@@ -68,25 +80,16 @@ res.send(err);
   }
 }
 })
-}
-  })
   })
 
 
-routes.get('/profAdmin', (req, res)=>{
-  let token = req.headers["authorization"];
-  console.log(token);
-  jwt.verify(token,secret, function (err, decoded) {
-    if(err){
-      res.json({err:err});
-    }else {
-      Users.findOne({_id:decoded.sub}, (err, decoded)=>{
+routes.get('/profAdmin', verifyToken, (req, res)=>{
+      Users.findOne({_id:userId}, (err, decoded)=>{
         if(err){
           res.json({err:err})
         }else{
           res.json(decoded);
         }
-      })}
 
   })
 })
@@ -168,14 +171,8 @@ routes.route('/admin').get((req, res)=> {
 })
 
 
-routes.route('/images').get( (req,res)=> {
-  let token = req.headers["authorization"];
-  console.log(token);
-  jwt.verify(token,secret, function (err, decoded) {
-    if(err){
-      res.json({err:err});
-    }else {
-      Images.find({userId:decoded.sub}, (err, decoded)=>{
+routes.route('/images').get(verifyToken, (req,res)=> {
+      Images.find({userId: userId}, (err, decoded)=>{
         if(err){
           res.json({err:err})
         }else{
@@ -184,9 +181,7 @@ routes.route('/images').get( (req,res)=> {
           }
           res.json(decoded);
         }
-      })}
-
-  })
+      })
 });
 
 
@@ -242,18 +237,11 @@ routes.route('/update/:id').post((req, res) =>{
 
 
 
-routes.route('/profile').post((req, res)=> {
-  console.log(req.body);
-  let token = req.headers["authorization"];
-  console.log(token);
-  jwt.verify(token,secret, function (err, decoded) {
-    if(err){
-      res.json({err:err});
-    }else {
+routes.route('/profile').post(verifyToken,(req, res)=> {
       let news = new News({
         title: req.body.title,
         textarea: req.body.textarea,
-          userId: decoded.sub
+          userId: userId
       })
       news.save(function (err, result) {
         if (err)
@@ -263,18 +251,10 @@ routes.route('/profile').post((req, res)=> {
 
       });
 
-    } })
-
     });
 
-routes.route('/changePass',).post((req, res)=> {
-  let token = req.headers["authorization"];
-  console.log(token);
-  jwt.verify(token,secret, function (err, decoded) {
-    if(err){
-      res.json({err:err});
-    }else {
-      Users.findOne({_id:decoded.sub}, (err, decoded)=>{
+routes.route('/changePass',).post(verifyToken,(req, res)=> {
+      Users.findOne({_id:userId}, (err, decoded)=>{
         if(err){
           res.json({err:err})
         }else{
@@ -287,20 +267,12 @@ routes.route('/changePass',).post((req, res)=> {
           })
 
         }
-      })}
-
-  })
+      })
 
 });
 
-routes.route('/getNews').get((req, res)=> {
-  let token = req.headers["authorization"];
-  console.log(token);
-  jwt.verify(token,secret, function (err, decoded) {
-    if(err){
-      res.json({err:err});
-    }else {
-      News.find({userId:decoded.sub}, (err, decoded)=>{
+routes.route('/getNews').get(verifyToken,(req, res)=> {
+      News.find({userId:userId}, (err, decoded)=>{
         if(err){
           res.json({err:err})
         }else{
@@ -309,9 +281,7 @@ routes.route('/getNews').get((req, res)=> {
           }
           res.json(decoded);
         }
-      })}
-
-  })
+      })
 
 });
 

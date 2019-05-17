@@ -42,9 +42,9 @@
   <button type='submit' (click)="OnUpload()">Save Post</button>
 </form>
 
-<p *ngFor="let image of img">
-  <img style="width: 200px;height: 200px"  src='http://localhost:4000/{{image.image}}' alt="some image">
-</p>
+<div *ngFor="let images of img">
+  <img style="width: 200px;height: 200px"  src='http://localhost:4000/images/{{images.image}}' alt="some image">
+</div>
 <!--<form enctype="multipart/form-data">-->
 <!--  <input id="myForm" type="file" name="file" (change)="postMethod($event.target.files)">-->
 <!--</form>-->
