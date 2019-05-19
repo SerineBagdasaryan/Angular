@@ -107,6 +107,21 @@ export class NewsService {
     console.log(obj);
  return this.http.post(`${this.uri}/profileUser`, obj);
   }
+  loginEmail( email): Observable<any> {
+    const obj = {
+      email: email,
+    };
+    console.log(obj);
+ return this.http.post(`${this.uri}/findEmail`, obj);
+  }
+  loginPassword( password,findbyEmail): Observable<any> {
+    const obj = {
+      findbyEmail: findbyEmail,
+      password: password,
+    };
+    console.log(obj);
+ return this.http.post(`${this.uri}/findPass`, obj);
+  }
 
   private getToken(): string {
     if (!this.token) {

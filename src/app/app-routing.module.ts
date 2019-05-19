@@ -8,6 +8,7 @@ import {EditNewsComponent} from "./edit-news/edit-news.component";
 import {AdminComponent} from "./admin/admin.component";
 import {EditUserComponent} from "./edit-user/edit-user.component";
 import {AuthGuard} from "./auth.guard";
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 const routes: Routes = [
   { path: '',
     redirectTo: 'news',
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
   path:'editUser/:id',
     component: EditUserComponent
+  },
+  {
+  path: 'forgotPass',
+    component: ForgotPasswordComponent
   },
 ];
 @NgModule({

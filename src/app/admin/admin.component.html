@@ -6,20 +6,19 @@
 <p>{{adminData?.lname}}</p>
 <p>{{adminData?.email}}</p>
 <div class="form-group">
-  <button class="btn btn-primary" (click)="show=!show">Change Password</button>
+  <a  href="#"  (click)="show=!show">Change Password</a>
 </div>
 <form [formGroup]="passForm" *ngIf="!show">
   <div class="form-group">
     <input placeholder="Enter your new password" type="password" formControlName="password" #password>
   </div>
   <div class="form-group">
-    <button  class="btn btn-primary" (click)="changePassword(password.value)">Send password</button>
+    <button  role="link" class="btn btn-primary" (click)="changePassword(password.value)">Send password</button>
   </div>
 </form>
 
-
-<button (click)="create()">Create User</button>
 <h2>User list</h2>
+<a [routerLink]="['/news/create']">Create User</a>
 <table class="text-center">
 <tr *ngFor="let user of users">
   <td>{{ user.fname }}</td>

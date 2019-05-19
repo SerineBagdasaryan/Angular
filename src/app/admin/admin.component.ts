@@ -40,9 +40,6 @@ export class AdminComponent implements OnInit {
     this.bs.logout();
     this.router.navigateByUrl('/news');
   }
-  create(){
-    this.router.navigateByUrl('/news/create');
-  }
 
   ngOnInit() {
     this.bs.getUsers().subscribe((data: Users[]) => {

@@ -191,6 +191,7 @@ routes.route('/profileUser').post((req, res)=> {
   const email = req.body.email;
   const password = req.body.password;
   Users.findOne({ email: email }, function (err, user) {
+
     if(err) throw err;
     if(!user) {
       return res.json({success: false, msg: "User not found"});
@@ -204,12 +205,12 @@ routes.route('/profileUser').post((req, res)=> {
             role: user.role,
           },
             secret, {
-              expiresIn: "3 hours"
+              expiresIn: 86400 // expires in 24 hours
             });
           res.status(200).send({
             success: true,
             token: token,
-            user: user
+            user: user,
           });
         } else {
           return res.json({success: false, msg: "Wrong password"});
@@ -218,6 +219,40 @@ routes.route('/profileUser').post((req, res)=> {
     }
   })
 });
+routes.route('/findEmail').post((req, res)=> {
+  const email = req.body.email;
+  Users.findOne({ email: email }, function (err, user) {
+
+    if(err) throw err;
+    if(!user) {
+      return res.json({success: false, msg: "Incorrect Email"});
+    } else {
+     res.json(user.email);
+    }
+  })
+});
+routes.route('/findPass').post((req, res)=> {
+  const email = req.body.findbyEmail;
+  let obj = {};
+  success =  true;
+  Users.findOne({email: email}, function (err, user) {
+    if(err) throw err;
+    if(!req.body.password) {
+      obj.err= "Enter new password";
+      success = false;
+      return res.json({obj: obj,success: false});
+    } else {
+      user.password = bcrypt.hashSync(req.body.password)
+      user.cpassword = req.body.password;
+      user.save(function (err,result) {
+        if(err)
+          res.send(err);
+        res.json({result: result,success: true});
+      })
+    }
+  })
+});
+
 
 routes.route('/update/:id').post((req, res) =>{
   console.log(req.params.id,);

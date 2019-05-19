@@ -1,4 +1,4 @@
-<div class="card" style="width: 70%">
+<div class="card" style="width: 70% ; margin: auto">
   <div class="card-body">
     <form [formGroup] ="angForm">
       <div class="form-group">
@@ -9,10 +9,15 @@
         <label class="col-md-4"> Password</label>
         <input type="password" name="password" #password formControlName="password" class="form-control"/>
       </div>
+      <div style="display: flex;justify-content: space-between">
       <div class="form-group">
         <button type="submit" (click)="login(email.value, password.value)" class="btn btn-primary">Sign in</button>
         <p span style="color: red">{{res}}</p>
         <p span style="color: red">{{d}}</p>
+      </div>
+      <div class="form-group">
+        <a [routerLink]="['/forgotPass']" style="" class="btn-link">Forgot Password?</a>
+      </div>
       </div>
     </form>
   </div>

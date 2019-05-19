@@ -20,6 +20,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import {AuthInterceptor} from "./auth.interceptor";
 import { KeysPipe } from './keys.pipe';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { KeysPipe } from './keys.pipe';
     EditUserComponent,
     SafeHtmlPipe,
     KeysPipe,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
