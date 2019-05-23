@@ -9,6 +9,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {EditUserComponent} from "./edit-user/edit-user.component";
 import {AuthGuard} from "./auth.guard";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ViewComponent} from "./view/view.component";
 const routes: Routes = [
   { path: '',
     redirectTo: 'news',
@@ -33,6 +34,10 @@ const routes: Routes = [
   },{
   path:'edit/:id',
     component: EditNewsComponent
+  },
+  {
+  path:'view/:id',
+    component: ViewComponent
   },
 
   {

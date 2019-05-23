@@ -8,6 +8,7 @@
 <div class="form-group">
   <a  href="#"  (click)="show=!show">Change Password</a>
 </div>
+
 <form [formGroup]="passForm" *ngIf="!show">
   <div class="form-group">
     <input placeholder="Enter your new password" type="password" formControlName="password" #password>
@@ -25,16 +26,65 @@
   </div>
   <button class="btn btn-primary" (click)="addNews(title.value, textarea.value)">Send News</button>
 </form>
+<div class="col-md-12">
+  <div class="col-md-6 ;">
 <div class="container">
   <div *ngFor="let item of news">
-    <h1 class="text-center">{{ item.title }}</h1>
+    <a role="link" data-toggle="modal" data-target="#myModal">
+      {{ item.title}}
+    </a>
+<!--<a [routerLink]="['/view',item._id]">{{ item.title }}</a>-->
+<!--<h1 class="">{{ item.title }}</h1>-->
     <p>{{item.textarea}}</p>
     <p> {{item.created | date}}</p>
-    <a [routerLink]="['/edit', item._id]"  class="btn btn-primary ml-5">Edit</a>
+    <a [routerLink]="['/edit', item._id]"  class="btn btn-primary">Edit</a>
     <a (click) = "deleteNews(item._id)" class="btn btn-danger">Delete</a>
   </div>
 </div>
 <br><br>
+  </div>
+  <div class="col-md-6">
+
+
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div *ngFor="let item of news">
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          {{ item.title}}
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>{{item.textarea}}</p>
+          <p> {{item.created | date}}</p>
+          <a [routerLink]="['/edit', item._id]"  class="btn btn-primary">Edit</a>
+          <a (click) = "deleteNews(item._id)" class="btn btn-danger">Delete</a>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
 
 
 <form>

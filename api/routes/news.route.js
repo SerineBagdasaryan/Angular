@@ -135,7 +135,26 @@ routes.get('/profAdmin', verifyToken, (req, res)=>{
 //   })
 //
 
+
 routes.post('/add', (req, res) => {
+  Users.find({role:req.body.role}, (err, users)=>{
+    if(err){
+      res.json({err:err})
+    }
+    if(users) {
+      const error = {};
+      success = true;
+      for (let key in users) {
+        console.log(users[key].role, "helloooooooooooo");
+        if (req.body.role === "admin" && users[key].role === "admin") {
+          success = false;
+          error.msg = "You can not register as an admin";
+          return res.json(error);
+        }
+      }
+    }
+
+
   const errors = {};
   success = true;
   if(req.body.password !== req.body.cpassword) {
@@ -158,7 +177,12 @@ routes.post('/add', (req, res) => {
       res.json({success: true, msges: "User registered"});
     }
   });
+  //   }
+  })
 });
+
+
+
 
 routes.route('/admin').get((req, res)=> {
 
@@ -322,6 +346,12 @@ routes.route('/getNews').get(verifyToken,(req, res)=> {
 
 
 routes.route('/edit/:id').get((req, res) =>{
+  let id = req.params.id;
+  News.findById(id, function (err, news){
+    res.json(news);
+  });
+});
+routes.route('/view/:id').get((req, res) =>{
   let id = req.params.id;
   News.findById(id, function (err, news){
     res.json(news);

@@ -1,4 +1,3 @@
-
 <div class="card" style="width: 70%; margin: auto">
   <div class="card-body">
     <form [formGroup]="angForm" novalidate>
@@ -17,7 +16,7 @@
       </div>
       <div *ngIf="angForm.controls['lname'].invalid && (angForm.controls['lname'].dirty || angForm.controls['lname'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['lname'].errors.required">
-           Last name is required.
+          Last name is required.
         </div>
       </div>
       <div class="form-group">
@@ -26,7 +25,7 @@
       </div>
       <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['email'].errors.required">
-         Email is required.
+          Email is required.
         </div>
       </div>
       <div class="form-group">
@@ -35,7 +34,7 @@
       </div>
       <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['password'].errors.required">
-         Password is required.
+          Password is required.
         </div>
       </div>
       <div class="form-group">
@@ -44,7 +43,7 @@
       </div>
       <div *ngIf="angForm.controls['cpassword'].invalid && (angForm.controls['cpassword'].dirty || angForm.controls['cpassword'].touched)" class="alert alert-danger">
         <div *ngIf="angForm.controls['cpassword'].errors.required">
-        Confirm Password is required.
+          Confirm Password is required.
         </div>
       </div>
 

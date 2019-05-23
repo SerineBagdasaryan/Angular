@@ -33,9 +33,6 @@ public findbyEmail;
     }else {
       this.message = data.msg;
     }
-
-
-// console.log(this.findbyEmail,'vo');
 })
   }
   loginPassword(password){

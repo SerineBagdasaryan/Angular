@@ -60,6 +60,7 @@ export class NewsService {
     });
   }
 
+
   addUsers(fname,lname, email,password,cpassword,role): Observable<any> {
     const obj = {
       fname: fname,
@@ -70,9 +71,10 @@ export class NewsService {
       role: role,
     };
     console.log(obj);
-   return this.http.post(`${this.uri}/add`, obj);
+    return this.http.post(`${this.uri}/add`, obj);
 
   }
+
 
   editUsers(id) {
     return this
@@ -199,4 +201,9 @@ export class NewsService {
   getUserName() {
     return this.http.get(`${this.uri}/profAdmin`);
   }
+
+  viewNews(id) {
+    return this.http.get(`${this.uri}/view/${id}`);
+  }
+
 }

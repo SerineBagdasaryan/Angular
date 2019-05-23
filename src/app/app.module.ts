@@ -21,6 +21,7 @@ import { SafeHtmlPipe } from './safe-html.pipe';
 import {AuthInterceptor} from "./auth.interceptor";
 import { KeysPipe } from './keys.pipe';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ViewComponent } from './view/view.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     SafeHtmlPipe,
     KeysPipe,
     ForgotPasswordComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,
