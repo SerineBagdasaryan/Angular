@@ -25,16 +25,12 @@
     <textarea class="form-control" rows="3" cols="10" id="comment" placeholder="News description" name="text" formControlName="textarea" #textarea></textarea>
   </div>
   <button class="btn btn-primary" (click)="addNews(title.value, textarea.value)">Send News</button>
+  <br><br>
 </form>
-<div class="col-md-12">
-  <div class="col-md-6 ;">
-<div class="container">
-  <div *ngFor="let item of news">
-    <a role="link" data-toggle="modal" data-target="#myModal">
-      {{ item.title}}
-    </a>
-<!--<a [routerLink]="['/view',item._id]">{{ item.title }}</a>-->
-<!--<h1 class="">{{ item.title }}</h1>-->
+<div class="col-md-12 container">
+  <div class="row">
+  <div *ngFor="let item of news" class="col-md-5 ml-1 mt-1" style="border: 1px solid darkgrey;cursor: pointer;">
+      <a [routerLink]="['/view',item._id]">{{ item.title }}</a>
     <p>{{item.textarea}}</p>
     <p> {{item.created | date}}</p>
     <a [routerLink]="['/edit', item._id]"  class="btn btn-primary">Edit</a>
@@ -42,51 +38,11 @@
   </div>
 </div>
 <br><br>
-  </div>
-  <div class="col-md-6">
+<!--  <div class="col-md-6">-->
 
 
-  </div>
+<!--  </div>-->
 </div>
-
-<div class="container mt-3">
-  <div *ngFor="let item of news">
-
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          {{ item.title}}
-          <button type="button" class="close" data-dismiss="modal">×</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <p>{{item.textarea}}</p>
-          <p> {{item.created | date}}</p>
-          <a [routerLink]="['/edit', item._id]"  class="btn btn-primary">Edit</a>
-          <a (click) = "deleteNews(item._id)" class="btn btn-danger">Delete</a>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-
-
-
 <form>
   <input type="file"  (change)="OnFileSelected($event)" name='file'>
   <button type='submit' (click)="OnUpload()">Save Post</button>
