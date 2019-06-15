@@ -1,0 +1,47 @@
+<form class="form">
+  <div class="row">
+    <div class="col-25">
+      <label for="title">Title</label>
+    </div>
+    <div class="col-75">
+      <input [(ngModel)]="title" value={{title}} type="text" id="title" name="title" placeholder="Title.." >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="placeName">Place Name</label>
+    </div>
+    <div class="col-75">
+      <input [(ngModel)]="placeName" value={{placeName}} type="text" id="placeName" name="placeName" placeholder="Enter place name.." >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="address">Address</label>
+    </div>
+    <div class="col-75">
+      <input [(ngModel)]="address" value={{address}} type="text" id="address" name="address" placeholder="Enter address.." >
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="date">Date</label>
+    </div>
+    <div class="col-75">
+      <input [(ngModel)]="date" value={{date}} type="date" id="date" name="date" >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="description">Description</label>
+    </div>
+    <div class="col-75">
+      <textarea [(ngModel)]="description" value={{description}} id="description" name="description" placeholder="Write something.." style="height:200px" ></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <button  (click)="updateEvent()" type="submit" class="button1 button2"> Update </button>
+  </div>
+</form>

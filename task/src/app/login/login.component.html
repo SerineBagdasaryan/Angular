@@ -1,0 +1,16 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="imgcontainer">
+    <img src="./assets/img.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label><b>Email</b></label>user@mail.ru
+    <input type="text"  formControlName="email" placeholder="Enter Email" name="email" required>
+
+    <label><b>Password</b></label>user123
+    <input type="password" formControlName="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit">Login</button>
+  </div>
+</form>

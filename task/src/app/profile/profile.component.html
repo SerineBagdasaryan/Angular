@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 loginBox">
+    Welcome,  {{email}}
+    <a href="javascript:void(0);"  style="text-decoration: none;margin-left: 700px" (click)="logout()">Logout</a>
+  </div>
+</div>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-25">
+        <label for="title">Title</label>
+      </div>
+      <div class="col-75">
+        <input [(ngModel)]="title" value={{title}} type="text" id="title" name="title" placeholder="Title.." >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="placeName">Place Name</label>
+      </div>
+      <div class="col-75">
+        <input [(ngModel)]="placeName" value={{placeName}} type="text" id="placeName" name="placeName" placeholder="Enter place name.." >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="address">Address</label>
+      </div>
+      <div class="col-75">
+        <input [(ngModel)]="address" value={{address}} type="text" id="address" name="address" placeholder="Enter address.." >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="date">Date</label>
+      </div>
+      <div class="col-75">
+        <input [(ngModel)]="date" value={{date}} type="date" id="date" name="date" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="description">Description</label>
+      </div>
+      <div class="col-75">
+        <textarea [(ngModel)]="description" value={{description}} id="description" name="description" placeholder="Write something.." style="height:200px" ></textarea>
+      </div>
+    </div>
+
+      <div class="row">
+        <button  class="button" (click)="addList()" type="submit">Add Event</button>
+      </div>
+  </form>
+</div>
+<div class="search">
+<h4>Search Event</h4>
+<input  type="text" name="search" [(ngModel)]="searchText">
+</div>
+<div class="cont">
+<div *ngFor="let item of data | filter:searchText" class="item" [class]="color"  [class.selected]="item === selectedEvent">
+  <p>Title: {{item.title}}</p>
+  <p> Place Name: {{item.placeName}}</p>
+  <p>Address: {{item.address}}</p>
+  <p>Date: {{item.date}}</p>
+  <p>Description: {{item.description}}</p>
+  <input type="checkbox" (click)="doEvent(item)">
+  <button [routerLink]="['/editEvent/', item.id]"  class="button1 button2">Edit Event</button>
+  <button  (click) = "removeList(item.id)"  class="button1 button3" >Remove Event</button>
+</div>
+</div>
