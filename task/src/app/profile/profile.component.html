@@ -5,13 +5,13 @@
   </div>
 </div>
 <div class="container">
-  <form>
+  <form [formGroup] ="angForm">
     <div class="row">
       <div class="col-25">
         <label for="title">Title</label>
       </div>
       <div class="col-75">
-        <input [(ngModel)]="title" value={{title}} type="text" id="title" name="title" placeholder="Title.." >
+        <input  type="text" id="title" name="title" placeholder="Title.."  #title formControlName="title">
       </div>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
         <label for="placeName">Place Name</label>
       </div>
       <div class="col-75">
-        <input [(ngModel)]="placeName" value={{placeName}} type="text" id="placeName" name="placeName" placeholder="Enter place name.." >
+        <input  #placeName formControlName="placeName" type="text" id="placeName" name="placeName" placeholder="Enter place name.." >
       </div>
     </div>
     <div class="row">
@@ -27,7 +27,7 @@
         <label for="address">Address</label>
       </div>
       <div class="col-75">
-        <input [(ngModel)]="address" value={{address}} type="text" id="address" name="address" placeholder="Enter address.." >
+        <input  #address formControlName="address" type="text" id="address" name="address" placeholder="Enter address.." >
       </div>
     </div>
 
@@ -36,7 +36,7 @@
         <label for="date">Date</label>
       </div>
       <div class="col-75">
-        <input [(ngModel)]="date" value={{date}} type="date" id="date" name="date" >
+        <input #date  formControlName="date" type="date" id="date" name="date" >
       </div>
     </div>
     <div class="row">
@@ -44,12 +44,22 @@
         <label for="description">Description</label>
       </div>
       <div class="col-75">
-        <textarea [(ngModel)]="description" value={{description}} id="description" name="description" placeholder="Write something.." style="height:200px" ></textarea>
+        <textarea  #description  formControlName="description" id="description" name="description" placeholder="Write something.." style="height:200px" ></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="status">Status</label>
+      </div>
+      <div class="col-75">
+        <select class="form-control" id="status" #status formControlName="status">
+          <option *ngFor="let status of statuses" [value]="status.name">{{status.name}}</option>
+        </select>
       </div>
     </div>
 
       <div class="row">
-        <button  class="button" (click)="addList()" type="submit">Add Event</button>
+        <button  class="button" (click)="addList(title.value,placeName.value,address.value,date.value,description.value,status.value);title.value= '';placeName.value='';address.value='';date.value='';description.value='';status.value='';" type="button">Add Event</button>
       </div>
   </form>
 </div>
@@ -57,6 +67,12 @@
 <h4>Search Event</h4>
 <input  type="text" name="search" [(ngModel)]="searchText">
 </div>
+
+
+<!--<input type="text" #button>-->
+<!--<button (click)="text = button.value">Click</button>-->
+<!--{{text}}-->
+
 <div class="cont">
 <div *ngFor="let item of data | filter:searchText" class="item" [class]="color"  [class.selected]="item === selectedEvent">
   <p>Title: {{item.title}}</p>
@@ -64,6 +80,7 @@
   <p>Address: {{item.address}}</p>
   <p>Date: {{item.date}}</p>
   <p>Description: {{item.description}}</p>
+  <p>Status: {{item.status}}</p>
   <input type="checkbox" (click)="doEvent(item)">
   <button [routerLink]="['/editEvent/', item.id]"  class="button1 button2">Edit Event</button>
   <button  (click) = "removeList(item.id)"  class="button1 button3" >Remove Event</button>

@@ -12,41 +12,37 @@ import {List} from "../list";
 export class ProfileComponent implements OnInit {
 email: string;
  data: any = [];
- public title: string;
-  public date: Date;
- public address: string;
- public description: string;
- public placeName: string;
- public status: boolean = false;
+  angForm: FormGroup;
   searchText;
   color;
   selectedEvent: List;
-  // angForm: FormGroup;
+  statuses = [{'name':'ordinary'}, {'name': 'special'}];
   constructor(private router: Router, public authService: AuthService,private fb: FormBuilder) {
-    this.title = '';
-    this.placeName = '';
-    this.address = '';
-    this.description = '';
+  this.createEvent();
+  }
+  createEvent() {
+    this.angForm = this.fb.group({
+      title: ['', Validators.required],
+      placeName: ['', Validators.required],
+      address: ['', Validators.required],
+      date: ['', Validators.required],
+      description: ['', Validators.required],
+      status: ['', Validators.required],
 
+    });
   }
 
   doEvent(item: any){
     this.selectedEvent = item;
-    this.status = true;
     }
 
 
 
-
-
-  private addList(): void {
+    addList(title, placeName, address, date, description, status){
     // @ts-ignore
-    this.authService.addList(this.title,this.placeName, this.address,this.date,this.description,this.status);
-    this.title = '';
-    this.placeName = '';
-    this.address = '';
-    this.description = '';
+    this.authService.addList(title,placeName, address,date,description,status);
   }
+
   removeList(id:number){
     this.authService.removeList(id);
 
@@ -60,14 +56,14 @@ email: string;
        if(this.data[i].date === Date()){
        this.color= 'orange'
        }
-       if(this.data[i].date < Date()){
-         this.color = 'red';
-       }
+       // if(this.data[i].date < Date()){
+       //   this.color = 'red';
+       // }
        console.log(Date(),'now')
 
     }
   }
-
+  text;
 
 
   logout(): void{

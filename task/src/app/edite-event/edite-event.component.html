@@ -1,10 +1,10 @@
-<form class="form">
+<form class="form" [formGroup] = 'edit'>
   <div class="row">
     <div class="col-25">
       <label for="title">Title</label>
     </div>
     <div class="col-75">
-      <input [(ngModel)]="title" value={{title}} type="text" id="title" name="title" placeholder="Title.." >
+      <input #title formControlName="title" type="text" id="title" name="title" placeholder="Title.." [(ngModel)] = "list.title">
     </div>
   </div>
   <div class="row">
@@ -12,7 +12,7 @@
       <label for="placeName">Place Name</label>
     </div>
     <div class="col-75">
-      <input [(ngModel)]="placeName" value={{placeName}} type="text" id="placeName" name="placeName" placeholder="Enter place name.." >
+      <input #placeName formControlName="placeName" type="text" id="placeName" name="placeName" placeholder="Enter place name.." [(ngModel)] = "list.placeName" >
     </div>
   </div>
   <div class="row">
@@ -20,7 +20,7 @@
       <label for="address">Address</label>
     </div>
     <div class="col-75">
-      <input [(ngModel)]="address" value={{address}} type="text" id="address" name="address" placeholder="Enter address.." >
+      <input #address formControlName="address" type="text" id="address" name="address" placeholder="Enter address.."  [(ngModel)] = "list.address">
     </div>
   </div>
 
@@ -29,7 +29,7 @@
       <label for="date">Date</label>
     </div>
     <div class="col-75">
-      <input [(ngModel)]="date" value={{date}} type="date" id="date" name="date" >
+      <input #date formControlName="date" type="date" id="date" name="date"  [(ngModel)] = "list.date">
     </div>
   </div>
   <div class="row">
@@ -37,11 +37,20 @@
       <label for="description">Description</label>
     </div>
     <div class="col-75">
-      <textarea [(ngModel)]="description" value={{description}} id="description" name="description" placeholder="Write something.." style="height:200px" ></textarea>
+      <textarea  #description formControlName="description" id="description" name="description" placeholder="Write something.." style="height:200px"  [(ngModel)] = "list.description"></textarea>
     </div>
   </div>
-
   <div class="row">
-    <button  (click)="updateEvent()" type="submit" class="button1 button2"> Update </button>
+    <div class="col-25">
+      <label for="status">Status</label>
+    </div>
+    <div class="col-75">
+      <select class="form-control" id="status" #status formControlName="status" [(ngModel)] = "list.status">
+        <option *ngFor="let status of statuses" [value]="status.name">{{status.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <button  (click)="updateEvent(title.value,placeName.value,address.value,date.value,description.value,status.value)" type="submit" class="button1 button2"> Update </button>
   </div>
 </form>

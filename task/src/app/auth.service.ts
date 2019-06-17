@@ -6,8 +6,6 @@ import { List} from "./list";
 })
 export class AuthService {
   private nextId:number;
-  private date: Date;
-  private status: boolean;
 
   constructor() {
     let lists = this.getList();
@@ -19,9 +17,9 @@ export class AuthService {
     }
 
   }
-  public addList(title: string, placeName: string,address: string, date: Date, description: string,status: boolean): void{
+  public addList(title: string, placeName: string,address: string, date: Date, description: string,status: string): void{
     // @ts-ignore
-    let list = new List(this.nextId,title,placeName,address,date,description,this.status)
+    let list = new List(this.nextId,title,placeName,address,date,description,status)
   let lists = this.getList();
     lists.push(list);
     this.setLocaleStorageLists(lists);
@@ -33,7 +31,7 @@ export class AuthService {
     return localStorageItem == null ? []:localStorageItem.lists;
   }
 
-  public removeList(id: number): void{
+  public removeList(id: number){
     let lists = this.getList();
     lists=lists.filter((list) => list.id !== id);
     this.setLocaleStorageLists(lists);
