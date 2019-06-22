@@ -78,10 +78,10 @@
   <p>Title: {{item.title}}</p>
   <p> Place Name: {{item.placeName}}</p>
   <p>Address: {{item.address}}</p>
-  <p>Date: {{item.date}}</p>
+  <p>Date: {{ item.date}}</p>
   <p>Description: {{item.description}}</p>
   <p>Status: {{item.status}}</p>
-  <input type="checkbox" (click)="doEvent(item)">
+  <input type="checkbox"  (click)="doEvent(item)">
   <button [routerLink]="['/editEvent/', item.id]"  class="button1 button2">Edit Event</button>
   <button  (click) = "removeList(item.id)"  class="button1 button3" >Remove Event</button>
 </div>

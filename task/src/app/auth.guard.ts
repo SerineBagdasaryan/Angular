@@ -23,15 +23,5 @@ return this.verifyLogin(url);
     }
   }
 
-  // @ts-ignore
-  // public isLoggedIn():boolean{
-  //   let status = false;
-  //   if(localStorage.getItem('isLoggedIn') == "true"){
-  //     status = true;
-  //   }else{
-  //     status = false;
-  //   }
-  //   return status;
-  // }
   
 }

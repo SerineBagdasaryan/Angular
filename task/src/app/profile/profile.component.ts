@@ -15,8 +15,11 @@ email: string;
   angForm: FormGroup;
   searchText;
   color;
+  format;
   selectedEvent: List;
   statuses = [{'name':'ordinary'}, {'name': 'special'}];
+  private findByDate: any;
+  private findByDateId: any;
   constructor(private router: Router, public authService: AuthService,private fb: FormBuilder) {
   this.createEvent();
   }
@@ -31,9 +34,9 @@ email: string;
 
     });
   }
-
   doEvent(item: any){
     this.selectedEvent = item;
+
     }
 
 
@@ -41,29 +44,26 @@ email: string;
     addList(title, placeName, address, date, description, status){
     // @ts-ignore
     this.authService.addList(title,placeName, address,date,description,status);
+      this.data = this.authService.getList();
   }
 
   removeList(id:number){
     this.authService.removeList(id);
+    this.data = this.authService.getList();
 
   }
 
 
   ngOnInit() {
+    let dateObj = new Date();
+    let month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+    let date = ('0' + dateObj.getDate()).slice(-2);
+    let year = dateObj.getFullYear();
+     this.format = year + '-' + month + '-' + date;
+    console.log(this.format,'change date format');
     this.email = localStorage.getItem('token');
      this.data = this.authService.getList();
-     for(let i = 0; i<this.data.length; i++){
-       if(this.data[i].date === Date()){
-       this.color= 'orange'
-       }
-       // if(this.data[i].date < Date()){
-       //   this.color = 'red';
-       // }
-       console.log(Date(),'now')
-
-    }
   }
-  text;
 
 
   logout(): void{

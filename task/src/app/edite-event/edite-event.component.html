@@ -29,7 +29,7 @@
       <label for="date">Date</label>
     </div>
     <div class="col-75">
-      <input #date formControlName="date" type="date" id="date" name="date"  [(ngModel)] = "list.date">
+      <input #date formControlName="date" type="text" id="date" name="date"  [(ngModel)] = "list.date">
     </div>
   </div>
   <div class="row">
@@ -49,7 +49,7 @@
         <option *ngFor="let status of statuses" [value]="status.name">{{status.name}}</option>
       </select>
     </div>
-  </div>
+  </div><br>
   <div class="row">
     <button  (click)="updateEvent(title.value,placeName.value,address.value,date.value,description.value,status.value)" type="submit" class="button1 button2"> Update </button>
   </div>

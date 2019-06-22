@@ -7,6 +7,9 @@
 .orange {
   background-color: orange;
 }
+.purple {
+  background-color: mediumpurple;
+}
 .selected {
   background-color: lawngreen !important;
   color: white;
