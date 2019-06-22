@@ -31,14 +31,18 @@ export class LoginComponent implements OnInit {
   d: any;
   login(email, password) {
     this.bs.login(email, password).subscribe((data: any) => {
-          console.log( data, 'hy');
+          console.log( data.user, 'hy');
           this.res = data.msg;
           if (data.user.role === 'admin') {
             this.router.navigate(['admin/' + data.user._id]);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            // @ts-ignore
+
           } else if (data.user.role === 'user') {
             this.router.navigate(['profileUser/'+ data.user._id]);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
           } else {
             this.router.navigate(['news']);
           }

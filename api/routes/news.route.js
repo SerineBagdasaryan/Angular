@@ -10,11 +10,13 @@ const routes = express.Router();
 let Users = require('../models/Users');
 let Images = require('../models/Images');
 let News = require('../models/News');
+let Chat = require('../models/Chat')
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const secret = 'secret';
-app.use(express.static('public'));
-
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static('public'));
+// app.use(express.static(__dirname + "/public"));
 const storage = multer.diskStorage({
   destination: './public/images',
   filename: function (req,file,cb) {
@@ -82,6 +84,21 @@ res.send(err);
 })
   })
 
+// routes.post('/',(req,res) => {
+//   const io = req.app.get('io');
+//   const chat = new Chat({
+//     description: req.body.description
+//   });
+//   chat.save().then(()=>{
+//     io.emit('newChatAdded');
+//   });
+// });
+//
+// routes.get('/',(req,res) =>{
+//   Chat.find({}).then((chat)=>{
+//     res.send(chat);
+//   });
+// });
 
 routes.get('/profAdmin', verifyToken, (req, res)=>{
       Users.findOne({_id:userId}, (err, decoded)=>{

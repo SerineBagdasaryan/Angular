@@ -11,6 +11,7 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class NewsService {
+  private user: string;
   private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?): Observable<any> {
     let base;
 
@@ -38,6 +39,10 @@ export class NewsService {
   private saveToken(token: string): void {
     localStorage.setItem('token', token);
     this.token = token;
+  }  
+   saveTokenUser(userInfo: string): void {
+    localStorage.setItem('user', userInfo);
+    this.user = userInfo;
   }
   uri = 'http://localhost:4000/news';
   private token: string;

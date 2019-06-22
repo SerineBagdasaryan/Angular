@@ -34,6 +34,9 @@ export class AdminComponent implements OnInit {
   deleteUsers(id) {
     this.bs.deleteUsers(id).subscribe(res => {
       console.log('Deleted');
+      this.bs.getUsers().subscribe((data: Users[]) => {
+        this.users= data;
+      });
     });
   }
   logout() {

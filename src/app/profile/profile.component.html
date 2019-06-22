@@ -2,9 +2,10 @@
 <button class="btn btn-success " style="margin-left: 800px;padding-top: 10px" (click)="logout()">
   Logout
 </button>
-<p>User Name is: {{res?.fname}}</p>
-<p>User Lastname is: {{res?.lname}}</p>
-<p>User email  is : {{res?.email}}</p>
+<p>User Name is: {{res.fname}}</p>
+<p>User Lastname is: {{res.lname}}</p>
+<p>User email  is : {{res.email}}</p>
+
 <div class="form-group">
   <a  href="#"  (click)="show=!show">Change Password</a>
 </div>
@@ -24,7 +25,7 @@
   <div class="form-group">
     <textarea class="form-control" rows="3" cols="10" id="comment" placeholder="News description" name="text" formControlName="textarea" #textarea></textarea>
   </div>
-  <button class="btn btn-primary" (click)="addNews(title.value, textarea.value)">Send News</button>
+  <button class="btn btn-primary" (click)="addNews(title.value, textarea.value);title.value= '';textarea.value= ''">Send News</button>
   <br><br>
 </form>
 <div class="col-md-12 container">
@@ -43,7 +44,7 @@
 
 <!--  </div>-->
 </div>
-<form>
+<form  enctype="multipart/form-data">
   <input type="file"  (change)="OnFileSelected($event)" name='file'>
   <button type='submit' (click)="OnUpload()">Save Post</button>
 </form>
