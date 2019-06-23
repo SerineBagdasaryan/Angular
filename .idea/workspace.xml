@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e606c215-f31d-4cc0-ad13-cf9345a47db9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/list.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/src/app/profile/profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/profile/profile.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task/src/app/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/profile/profile.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task/src/app/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/task/src/app/profile/profile.component.ts" afterDir="false" />
     </list>
@@ -28,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/src/app/auth.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="37" column="38" lean-forward="true" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+            <state relative-caret-position="697">
+              <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -37,13 +30,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/src/app/profile/profile.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-115">
-              <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+            <state relative-caret-position="134">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task/src/app/profile/profile.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#textarea#0;n#div#1;n#div#4;n#form#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/task/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/task/src/app/login/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#1;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#form#0;n#!!top" expanded="true" />
@@ -65,7 +88,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
+            <state relative-caret-position="867">
               <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
             </state>
           </provider>
@@ -74,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/src/app/auth.guard.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+            <state relative-caret-position="187">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -86,53 +109,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/src/app/login/login.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+            <state relative-caret-position="204">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/src/test.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/src/app/list.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/src/app/profile/profile.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="85" column="42" lean-forward="true" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#1;n#div#4;n#form#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -157,7 +137,6 @@
         <option value="$PROJECT_DIR$/task/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/task/src/app/app.component.css" />
         <option value="$PROJECT_DIR$/task/src/app/app-routing.module.ts" />
-        <option value="$PROJECT_DIR$/task/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.css" />
         <option value="$PROJECT_DIR$/task/src/app/list.ts" />
         <option value="$PROJECT_DIR$/task/src/app/login/login.component.css" />
@@ -167,9 +146,10 @@
         <option value="$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.ts" />
         <option value="$PROJECT_DIR$/task/src/app/login/login.component.ts" />
         <option value="$PROJECT_DIR$/task/src/app/auth.service.ts" />
-        <option value="$PROJECT_DIR$/task/src/app/profile/profile.component.html" />
         <option value="$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.html" />
         <option value="$PROJECT_DIR$/task/src/app/profile/profile.component.ts" />
+        <option value="$PROJECT_DIR$/task/src/app/profile/profile.component.html" />
+        <option value="$PROJECT_DIR$/task/src/app/app.module.ts" />
       </list>
     </option>
   </component>
@@ -185,6 +165,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -238,7 +219,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,17 +272,18 @@
       <workItem from="1560952457554" duration="3106000" />
       <workItem from="1561041974265" duration="4562000" />
       <workItem from="1561106806458" duration="7846000" />
-      <workItem from="1561217799089" duration="8133000" />
+      <workItem from="1561217799089" duration="9689000" />
+      <workItem from="1561284900046" duration="1739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143576000" />
+    <option name="totallyTimeSpent" value="146871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23065476" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21949404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -315,7 +296,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49925596" visible="true" weight="0.16013072" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49925596" visible="true" weight="0.25653595" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50074404" side_tool="true" weight="0.28267974" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -345,17 +326,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/task/src/app/profile/profile.component.ts</url>
-          <line>73</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/task/README.md">
@@ -454,23 +424,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task/src/app/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/task/src/app/list.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task/src/app/auth.guard.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -481,40 +438,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task/src/app/list.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task/src/app/login/login.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/task/src/app/auth.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="37" column="38" lean-forward="true" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
+        <state relative-caret-position="697">
+          <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task/src/app/profile/profile.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="85" column="42" lean-forward="true" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#4;n#form#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -522,7 +451,7 @@
     <entry file="file://$PROJECT_DIR$/task/src/app/login/login.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="n#style#0;n#span#0;n#div#1;n#form#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#form#0;n#!!top" expanded="true" />
@@ -532,17 +461,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/task/src/app/edite-event/edite-event.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
+        <state relative-caret-position="867">
           <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/src/app/auth.guard.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/src/app/login/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task/src/app/profile/profile.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+        <state relative-caret-position="134">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/src/app/profile/profile.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#4;n#form#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
           </folding>
         </state>
       </provider>

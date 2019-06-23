@@ -63,6 +63,29 @@ email: string;
     console.log(this.format,'change date format');
     this.email = localStorage.getItem('token');
      this.data = this.authService.getList();
+
+    // this.findByDate=this.data.find(p => p.date < this.format);
+    // console.log(this.findByDate.id,"one id");
+    // this.findByDateId=this.data.find(p => p.id== this.findByDate.id);
+    // if(this.findByDateId){
+    //   this.color = 'red';
+    // }
+
+    //  for(let i = 0; i<this.data.length; i++){
+    //    if(this.data[i].date === format){
+    //      this.color = 'orange';
+    //      // @ts-ignore
+    //      // document.getElementsByClassName('item').backgroundColor = 'orange'
+    //    }
+    //    if(this.data[i].date < format){
+    //      this.color = 'red';
+    //    }
+    //    // else{
+    //    //   this.color = '';
+    //    // }
+    //
+    //
+    // }
   }
 
 

@@ -21,8 +21,9 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     Ng2SearchPipeModule,
+
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
