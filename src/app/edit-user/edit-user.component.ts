@@ -35,7 +35,7 @@ export class EditUserComponent implements OnInit {
   updateUsers(fname, lname, email,password,cpassword,role) {
     this.route.params.subscribe(params => {
       this.bs.updateUsers(fname, lname, email, password, cpassword,role, params['id']);
-      // this.router.navigate(['admin']);
+      this.router.navigate(['admin']);
     });
   }
   ngOnInit() {

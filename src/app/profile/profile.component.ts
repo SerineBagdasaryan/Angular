@@ -88,17 +88,11 @@ export class ProfileComponent implements OnInit {
       this.img= data;
       console.log(this.img);
   })
-
-
-
-
-    this.res = JSON.parse(localStorage.getItem('user'));
-    return this.res == this.res.user;
-    // console.log(this.res.fname,'str');
-    // this.bs.getUserName().subscribe((data) => {
-    //   this.res = data;
-    //   console.log(data);
-    // })
+    console.log(this.res.fname,'str');
+    this.bs.getUserName().subscribe((data) => {
+      this.res = data;
+      console.log(data);
+    })
 
 
 

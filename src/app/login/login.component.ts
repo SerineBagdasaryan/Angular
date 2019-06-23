@@ -36,13 +36,12 @@ export class LoginComponent implements OnInit {
           if (data.user.role === 'admin') {
             this.router.navigate(['admin/' + data.user._id]);
             localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
+
             // @ts-ignore
 
           } else if (data.user.role === 'user') {
             this.router.navigate(['profileUser/'+ data.user._id]);
             localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
           } else {
             this.router.navigate(['news']);
           }
