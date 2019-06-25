@@ -4,6 +4,8 @@
     <a href="javascript:void(0);"  style="text-decoration: none;margin-left: 700px" (click)="logout()">Logout</a>
   </div>
 </div>
+
+
 <div class="container">
   <form [formGroup] ="angForm">
     <div class="row">
@@ -66,10 +68,10 @@
 <div class="search">
 <h4>Search Event</h4>
 <input  type="text" name="search" [(ngModel)]="searchText">
-</div>
+</div><br>
 
 <div class="cont">
-<div *ngFor="let item of data | filter:searchText" class="item" [class]="color"  [class.selected]="item === selectedEvent">
+<div *ngFor="let item of data | filter:searchText" class="item" [class]="color"  [class.selected]="item === selectedEvent" [style.background-color]="item.active ? 'orange' : (item.active1 ? 'red' : null)" >
   <p>Title: {{item.title}}</p>
   <p> Place Name: {{item.placeName}}</p>
   <p>Address: {{item.address}}</p>

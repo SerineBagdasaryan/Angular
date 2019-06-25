@@ -18,7 +18,7 @@ export class AuthService {
     }
 
   }
-  public addList(title: string, placeName: string,address: string, date: string, description: string,status: string): void{
+  public addList(title: string, placeName: string,address: string, date: Date, description: string,status: string): void{
     // @ts-ignore
     let list = new List(this.nextId,title,placeName,address,date,description,status)
   let lists = this.getList();

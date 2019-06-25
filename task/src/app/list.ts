@@ -3,11 +3,11 @@ export class List {
   title: string;
   placeName: string;
   address: string;
-  date: string;
+  date: Date;
   description: string;
   status: string;
 
-  constructor(id: number, title: string,placeName: string, address: string, date: string, description: string ,status: string) {
+  constructor(id: number, title: string,placeName: string, address: string, date: Date, description: string ,status: string) {
     this.id = id;
     this.title = title;
     this.placeName = placeName;

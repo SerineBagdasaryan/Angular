@@ -18,8 +18,6 @@ email: string;
   format;
   selectedEvent: List;
   statuses = [{'name':'ordinary'}, {'name': 'special'}];
-  private findByDate: any;
-  private findByDateId: any;
   constructor(private router: Router, public authService: AuthService,private fb: FormBuilder) {
   this.createEvent();
   }
@@ -38,9 +36,6 @@ email: string;
     this.selectedEvent = item;
 
     }
-
-
-
     addList(title, placeName, address, date, description, status){
     // @ts-ignore
     this.authService.addList(title,placeName, address,date,description,status);
@@ -63,29 +58,18 @@ email: string;
     console.log(this.format,'change date format');
     this.email = localStorage.getItem('token');
      this.data = this.authService.getList();
+    for(let i=0; i<this.data.length; i++){
+      if(this.data[i].date === this.format ){
+        this.data[i].active = true;
 
-    // this.findByDate=this.data.find(p => p.date < this.format);
-    // console.log(this.findByDate.id,"one id");
-    // this.findByDateId=this.data.find(p => p.id== this.findByDate.id);
-    // if(this.findByDateId){
-    //   this.color = 'red';
-    // }
+      } else if(this.data[i].date < this.format){
+        this.data[i].active1 = true;
+      } else {
+        this.data[i].active = false;
+      }
 
-    //  for(let i = 0; i<this.data.length; i++){
-    //    if(this.data[i].date === format){
-    //      this.color = 'orange';
-    //      // @ts-ignore
-    //      // document.getElementsByClassName('item').backgroundColor = 'orange'
-    //    }
-    //    if(this.data[i].date < format){
-    //      this.color = 'red';
-    //    }
-    //    // else{
-    //    //   this.color = '';
-    //    // }
-    //
-    //
-    // }
+    }
+
   }
 
 
