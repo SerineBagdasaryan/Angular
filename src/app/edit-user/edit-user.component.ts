@@ -9,8 +9,6 @@ import {NewsService} from "../news.service";
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-
-
   users: any = {};
   angForm: FormGroup;
 

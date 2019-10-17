@@ -12,40 +12,41 @@ import {map} from "rxjs/operators";
 })
 export class NewsService {
   private user: string;
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?): Observable<any> {
-    let base;
+  // private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?): Observable<any> {
+  //   let base;
+  //
+  //   if (method === 'post') {
+  //     base = this.http.post(`/api/${type}`, user);
+  //   } else {
+  //     base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+  //   }
+  //
+  //   const request = base.pipe(
+  //     map((data) => {
+  //       // @ts-ignore
+  //       if (data.token) {
+  //         // @ts-ignore
+  //         this.saveToken(data.token);
+  //       }
+  //       return data;
+  //     })
+  //   );
+  //
+  //   return request;
+  // }
 
-    if (method === 'post') {
-      base = this.http.post(`/api/${type}`, user);
-    } else {
-      base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
-    }
 
-    const request = base.pipe(
-      map((data) => {
-        // @ts-ignore
-        if (data.token) {
-          // @ts-ignore
-          this.saveToken(data.token);
-        }
-        return data;
-      })
-    );
-
-    return request;
-  }
-
-
-  private saveToken(token: string): void {
-    localStorage.setItem('token', token);
-    this.token = token;
-  }  
-   saveTokenUser(userInfo: string): void {
-    localStorage.setItem('user', userInfo);
-    this.user = userInfo;
-  }
+  // private saveToken(token: string): void {
+  //   localStorage.setItem('token', token);
+  //   this.token = token;
+  // }
+  //  saveTokenUser(userInfo: string): void {
+  //   localStorage.setItem('user', userInfo);
+  //   this.user = userInfo;
+  // }
   uri = 'http://localhost:4000/news';
   private token: string;
+  private data;
 
   public isLoggedIn(){
     return localStorage.getItem('token') !== null;
@@ -114,6 +115,7 @@ export class NewsService {
     console.log(obj);
  return this.http.post(`${this.uri}/profileUser`, obj);
   }
+
   loginEmail( email): Observable<any> {
     const obj = {
       email: email,
@@ -137,10 +139,33 @@ export class NewsService {
     return this.token;
   }
 
+  getTokenExpirationDate(token: string): Date {
+    const decoded = decode(token);
+
+    // @ts-ignore
+    if (decoded.exp === undefined) return null;
+
+    const date = new Date(0);
+    // @ts-ignore
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    if(!token) token = this.getToken();
+    if(!token) return true;
+
+    const date = this.getTokenExpirationDate(token);
+    if(date === undefined) return false;
+    return !(date.valueOf() > new Date().valueOf());
+  }
 
 
   getNews(){
     return this.http.get(`${this.uri}/getNews`);
+  }
+  getRoles(){
+    return this.http.get(`${this.uri}/userRole`);
   }
 
   getImage() {

@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 // const upload = multer({dest:'uploads/'});
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const routes = express.Router();
 let Users = require('../models/Users');
 let Images = require('../models/Images');
@@ -14,6 +15,9 @@ let Chat = require('../models/Chat')
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const secret = 'secret';
+
+const PORT = 4000;
+const URL = `http://localhost:${PORT}/`;
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('public'));
 // app.use(express.static(__dirname + "/public"));
@@ -68,7 +72,7 @@ if(err){
     res.json({msg:'No file selected'});
   } else {
     // const fullPath = "images/" + req.file.filename;
-    const fullPath = req.file.filename;
+    const fullPath = `${URL}public/images/${req.file.filename}`;
     const images = new Images({
       image: fullPath,
       userId: userId,
@@ -77,7 +81,8 @@ if(err){
       if(err) {
 res.send(err);
       }
-      res.json(file) //file
+      res.json(fullPath);
+      // res.json(file) //file
     });
   }
 }
@@ -109,6 +114,13 @@ routes.get('/profAdmin', verifyToken, (req, res)=>{
         }
 
   })
+})
+routes.get('/userRole', (req, res)=>{
+
+ let roles = [{'name':'user'}, {'name': 'admin'}];
+          res.json(roles);
+
+
 })
 
 
@@ -246,7 +258,7 @@ routes.route('/profileUser').post((req, res)=> {
             role: user.role,
           },
             secret, {
-              expiresIn: 86400 // expires in 24 hours
+              expiresIn: 86400// expires in 24 hours
             });
           res.status(200).send({
             success: true,
@@ -262,13 +274,32 @@ routes.route('/profileUser').post((req, res)=> {
 });
 routes.route('/findEmail').post((req, res)=> {
   const email = req.body.email;
+  let randomNum = Math.floor(Math.random() * 1000000).toString();
   Users.findOne({ email: email }, function (err, user) {
 
     if(err) throw err;
     if(!user) {
       return res.json({success: false, msg: "Incorrect Email"});
     } else {
-     res.json(user.email);
+
+      let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user:'forlessonsnode@gmail.com',
+          pass: 'fornodejs'
+        }
+      });
+      let result =  transporter.sendMail({
+        from: '"Node js" <forlessonsnode@gmail.com>',
+        to: email,
+        subject: "Message from Node js",
+        html: randomNum
+      });
+
+      console.log(result);
+      res.json({email:user.email,rand:randomNum});
+
+
     }
   })
 });

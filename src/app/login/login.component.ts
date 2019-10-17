@@ -73,15 +73,17 @@ export class LoginComponent implements OnInit {
       const tokenPayload = decode(token);
       const tokenRole = tokenPayload['role'];
       const id = tokenPayload['sub'];
-      if (tokenRole === 'admin') {
+
+      if (tokenRole === 'admin' && !this.bs.isTokenExpired()) {
           this.router.navigateByUrl('/admin/'+  id);
-      } else if (tokenRole === 'user') {
+
+      } else if (tokenRole === 'user' && !this.bs.isTokenExpired()) {
           this.router.navigateByUrl('/profileUser/' + id);
       }
     }
 
  else {
-      this.router.navigateByUrl('/news');
+      this.router.navigate(['/news']);
 
       }
     }

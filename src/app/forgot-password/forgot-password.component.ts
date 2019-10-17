@@ -13,6 +13,7 @@ export class ForgotPasswordComponent implements OnInit {
   angForm: FormGroup;
   public message: string;
   public mess: string;
+  private show1: boolean;
   constructor(private http: HttpClient, private fb: FormBuilder, private bs: NewsService, private router: Router, private route: ActivatedRoute) {
     this.createForm();
   }
@@ -20,22 +21,38 @@ export class ForgotPasswordComponent implements OnInit {
     this.angForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
+      text: ['']
 
     });
   }
   public show= true;
 public findbyEmail;
+public randomN;
   loginEmail(email){
   this.bs.loginEmail(email).subscribe((data: any) => {
     if(data.success !== false){
-      this.show = false;
-      this.findbyEmail = data;
+      this.show = true;
+      this.findbyEmail = data.email;
+      this.randomN = data.rand;
+      console.log( this.randomN,'with randomNum');
+      this.show1 = true;
     }else {
       this.message = data.msg;
     }
 })
   }
-  loginPassword(password){
+
+  randNumber(text){
+   if(this.randomN === text){
+     this.show = false;
+     this.show1 = false;
+     console.log(true)
+   }else{
+     console.log(false);
+     this.router.navigate(['news']);
+   }
+}
+    loginPassword(password){
   this.bs.loginPassword(password,this.findbyEmail).subscribe((data: any) => {
     if(data.success === false){
       this.mess = data.obj.err;
@@ -45,12 +62,6 @@ public findbyEmail;
     }
 
 
-
-
-
-
-
-// console.log(this.findbyEmail,'vo');
 })
   }
 

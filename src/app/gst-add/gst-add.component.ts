@@ -17,7 +17,7 @@ export class GstAddComponent implements OnInit {
   constructor(private fb: FormBuilder, private bs: NewsService) {
     this.createForm();
   }
-  roles = [{'name':'user'}, {'name': 'admin'}];
+  roles = [];
   createForm() {
     this.angForm = this.fb.group({
       fname: ['', Validators.required ],
@@ -40,6 +40,9 @@ export class GstAddComponent implements OnInit {
 
 
   ngOnInit() {
+     this.bs.getRoles().subscribe((data: any) =>{
+       this.roles = data;
+     })
   }
 
 }

@@ -17,6 +17,7 @@ export class AdminComponent implements OnInit {
   public show =true;
   passForm: FormGroup;
   private adminData;
+  private a: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute, private location: Location, private fb: FormBuilder, private bs: NewsService) {
     this.createFormPass();
@@ -46,8 +47,21 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.bs.getUsers().subscribe((data: Users[]) => {
+       this.a =true;
         this.users= data;
+        for(let i in this.users){
+          // @ts-ignore
+          console.log(this.users[i].role,'role is');
+          // @ts-ignore
+          if(this.users[i].role === "admin"){
+            this.a= false;
+          }
+        }
       });
+
+
+
+
     this.bs.getUserName().subscribe((data: Users[]) => {
       this.adminData = data;
       console.log(data);

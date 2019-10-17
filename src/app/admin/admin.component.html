@@ -20,11 +20,11 @@
 <h2>User list</h2>
 <a [routerLink]="['/news/create']">Create User</a>
 <table class="text-center">
-<tr *ngFor="let user of users">
-  <td>{{ user.fname }}</td>
-  <td>{{ user.lname }}</td>
-  <td>{{ user.email }}</td>
-  <td><a [routerLink]="['/editUser/', user._id]" class="btn btn-primary">Edit</a></td>
-  <td><a (click) = "deleteUsers(user._id)" class="btn btn-danger">Delete</a></td>
-</tr>
+  <tr *ngFor="let user of users">
+    <td >{{ user.fname }}</td>
+    <td>{{ user.lname }}</td>
+    <td>{{ user.email }}</td>
+    <td><a [routerLink]="['/editUser/', user._id]" class="btn btn-primary">Edit</a></td>
+    <td><a (click)="deleteUsers(user._id)" class="btn btn-danger">Delete</a></td>
+  </tr>
 </table>
