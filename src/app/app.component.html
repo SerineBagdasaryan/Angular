@@ -1,5 +1,4 @@
 <ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
-
 <nav class="navbar navbar-expand-sm bg-light" *ngIf="!this.service.isLoggedIn()">
   <div class="container-fluid">
     <ul class="navbar-nav">
@@ -17,6 +16,8 @@
 
   </div>
 </nav>
+<!--<app-login [userName]="userName" [userAge]="userAge"></app-login>-->
+<!--<input type="text" [(ngModel)]="userName" />-->
 <div class="container">
   <router-outlet></router-outlet>
 </div>

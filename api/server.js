@@ -26,7 +26,7 @@ res.header("Access-Control-Expose-Headers: Authorization");
 
   next();
 });
-app.use(express.static(path.join(__dirname,'dist/angular7crud')));
+// app.use(express.static(path.join(__dirname,'dist/angular7crud')));
 // app.use(express.static(path.join(__dirname,'index.html')));
 const port = process.env.PORT || 4000;
 const server = http.createServer(app);

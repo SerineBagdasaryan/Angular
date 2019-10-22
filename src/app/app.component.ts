@@ -15,6 +15,8 @@ import {NewsService} from "./news.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
+  userName:string="Tom";
+  userAge:number = 24;
   constructor(private _loadingBar: SlimLoadingBarService, private _router: Router,private service: NewsService) {
     this._router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);

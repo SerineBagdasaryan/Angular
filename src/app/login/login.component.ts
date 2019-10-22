@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NewsService} from "../news.service";
@@ -12,6 +12,8 @@ import * as decode from "jwt-decode";
 })
 
 export class LoginComponent implements OnInit {
+  // @Input() userName: string;
+  // @Input() userAge: number;
   angForm: FormGroup;
   public id: number;
 
@@ -65,7 +67,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
+  showContacts(ev): void {
+    console.log(ev.target);
+    console.log(ev.target.value); //в данном случае undefined
+    console.log(ev.keyCode); //в данном случае undefined
+  }
+  name = "rex";
   ngOnInit() {
 
     const token = localStorage.getItem('token');

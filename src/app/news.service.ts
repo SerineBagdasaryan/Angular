@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import 'rxjs/Rx';
 import {User} from "./user";
@@ -221,10 +222,16 @@ export class NewsService {
       .http
       .get(`${this.uri}/delete/${id}`);
   }
+
   deleteNews(id) {
     return this
       .http
       .get(`${this.uri}/deleteNews/${id}`);
+  }
+  deleteImg(id) {
+    return this
+      .http
+      .get(`${this.uri}/deleteImg/${id}`);
   }
 
 

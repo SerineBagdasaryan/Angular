@@ -4,7 +4,7 @@ const expressJwt = require('express-jwt');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-// const upload = multer({dest:'uploads/'});
+const upload = multer({dest:'/images/'});
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const routes = express.Router();
@@ -16,37 +16,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const secret = 'secret';
 
-const PORT = 4000;
-const URL = `http://localhost:${PORT}/`;
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static('public'));
-// app.use(express.static(__dirname + "/public"));
-const storage = multer.diskStorage({
-  destination: './public/images',
-  filename: function (req,file,cb) {
-    cb(null,file.fieldname + '-' + Date.now()+
-    path.extname(file.originalname));
-  }
-});
-const upload = multer({
-  storage: storage,
-  // limits: {fileSize:1000000},
-  fileFilter:function (req,file,cb) {
-    checkFileType(file,cb);
-  }
-}).single('file');
-
-function checkFileType(file,cb){
-  const filetypes = /jpeg|jpg|png|gif/;
-  const extname= filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-  if(mimetype && extname){
-    return cb(null,true);
-  }else {
-    cb('Error: Image only!')
-  }
-}
-
 let userId;
 function verifyToken(req, res, next) {
   let token = req.headers["authorization"];
@@ -55,55 +24,34 @@ function verifyToken(req, res, next) {
   jwt.verify(token, secret, function(err, decoded) {
     if (err)
       return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-     userId = decoded.sub;
-    console.log(decoded,'fggg');
+    userId = decoded.sub;
     next();
   });
 }
+routes.post('/upload',upload.any(), verifyToken,(req,res) => {
+  console.log(req.files,'old');
+  if (req.files) {
 
+    req.files.forEach(function (file) {
+      let filename = (new Date).valueOf() + "_" + file.originalname
+      fs.rename(file.path, '../src/assets/' + filename, function (err) {
+        if (err) throw err;
+        let images = new Images({
+          image: filename,
+          userId : userId
+        })
+        images.save(function (err, result) {
+          if (err) {
+          }
+          res.json(result);
 
+        });
 
-routes.post('/upload', verifyToken,(req,res) => {
-upload(req,res,(err)=>{
-if(err){
-  res.send(err);
-}else {
-  if(req.file === 'undefined'){
-    res.json({msg:'No file selected'});
-  } else {
-    // const fullPath = "images/" + req.file.filename;
-    const fullPath = `${URL}public/images/${req.file.filename}`;
-    const images = new Images({
-      image: fullPath,
-      userId: userId,
-    })
-    images.save(function (err,file) {
-      if(err) {
-res.send(err);
-      }
-      res.json(fullPath);
-      // res.json(file) //file
+      });
     });
   }
-}
-})
-  })
 
-// routes.post('/',(req,res) => {
-//   const io = req.app.get('io');
-//   const chat = new Chat({
-//     description: req.body.description
-//   });
-//   chat.save().then(()=>{
-//     io.emit('newChatAdded');
-//   });
-// });
-//
-// routes.get('/',(req,res) =>{
-//   Chat.find({}).then((chat)=>{
-//     res.send(chat);
-//   });
-// });
+})
 
 routes.get('/profAdmin', verifyToken, (req, res)=>{
       Users.findOne({_id:userId}, (err, decoded)=>{
@@ -174,7 +122,6 @@ routes.post('/add', (req, res) => {
       const error = {};
       success = true;
       for (let key in users) {
-        console.log(users[key].role, "helloooooooooooo");
         if (req.body.role === "admin" && users[key].role === "admin") {
           success = false;
           error.msg = "You can not register as an admin";
@@ -230,7 +177,6 @@ routes.route('/images').get(verifyToken, (req,res)=> {
           res.json({err:err})
         }else{
           for (let key in decoded) {
-            console.log(decoded[key], "helloooooooooooo");
           }
           res.json(decoded);
         }
@@ -285,12 +231,12 @@ routes.route('/findEmail').post((req, res)=> {
       let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user:'forlessonsnode@gmail.com',
-          pass: 'fornodejs'
+          user:'serinebagdasaryan5@gmail.com',
+          pass: '093302669m'
         }
       });
       let result =  transporter.sendMail({
-        from: '"Node js" <forlessonsnode@gmail.com>',
+        from: '"Node js" <serinebagdasaryan5@gmail.com>',
         to: email,
         subject: "Message from Node js",
         html: randomNum
@@ -384,7 +330,6 @@ routes.route('/getNews').get(verifyToken,(req, res)=> {
           res.json({err:err})
         }else{
           for (let key in decoded) {
-            console.log(decoded[key], "helloooooooooooo");
           }
           res.json(decoded);
         }
@@ -441,6 +386,12 @@ routes.route('/delete/:id').get((req, res)=> {
 });
 routes.route('/deleteNews/:id').get((req, res) => {
   News.deleteOne({_id: req.params.id}, function(err, news){
+    if(err) res.json(err);
+    else res.json('Successfully removed');
+  });
+});
+routes.route('/deleteImg/:id').get((req, res) => {
+  Images.deleteOne({_id: req.params.id}, function(err, img){
     if(err) res.json(err);
     else res.json('Successfully removed');
   });
